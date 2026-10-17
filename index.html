@@ -298,7 +298,7 @@ button{font-family:inherit;cursor:pointer;border:none;touch-action:manipulation;
 <input id="gc" autocomplete="off" spellcheck="false" placeholder="КОД"><button class="tbtn gbtn">Кіру ➜</button><div class="gerr" id="ge"></div></form></div>
 <script id="gatejs">
 (function(){/* код → иесі, мерзімі (сол күннің соңына дейін) */
-const C={'dd4cf2b8f8e74c86911ac60169c4a6ddb5d09d34454081bb80d0c3d56e1e75b4':{n:'Уақытша (6 сағат)',u:'',k:'499941',e:1792258786061}};
+const C={'dd4cf2b8f8e74c86911ac60169c4a6ddb5d09d34454081bb80d0c3d56e1e75b4':{n:'Уақытша (6 сағат)',u:'',k:'499941',e:1792258786061,x:1}};
 const PHONE='8 747 733 95 73';
 const DEV=(()=>{let d=null;try{d=localStorage.getItem('dev_id')}catch(e){}if(!d){d=Math.random().toString(36).slice(2,6).toUpperCase();try{localStorage.setItem('dev_id',d)}catch(e){}}return d})();
 const DEVNAME=(()=>{const u=navigator.userAgent,tp=navigator.maxTouchPoints||0,W=Math.max(screen.width,screen.height);
@@ -365,7 +365,7 @@ async function fsPut(code,fps,name){return fetch(FB+encodeURIComponent(code)+'?k
 function tgSend(txt,code){const kb={inline_keyboard:[[{text:'🔓 Firebase-те ашу (рұқсат беру)',url:CONSOLE(code)}]]};
  fetch('https://api.telegram.org/bot'+TG+'/sendMessage?chat_id='+TGID+'&text='+encodeURIComponent(txt)+'&reply_markup='+encodeURIComponent(JSON.stringify(kb)),{mode:'no-cors'})}
 async function devWatch(code,name,fp,line,desc,nolim){try{const fps=await fsGet(code);
-  if(fps.includes(BLK))return 'blocked';
+  if(!nolim&&fps.includes(BLK))return 'blocked';
   if(fps.includes(fp))return 'ok';
   if(nolim||fps.length<LIMIT){fps.push(fp);await fsPut(code,fps,name);return 'ok'}
   const old=fps.slice();fps.push(BLK,fp);await fsPut(code,fps,name);
