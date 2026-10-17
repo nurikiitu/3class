@@ -239,7 +239,7 @@ const g=document.getElementById('gate'),inp=document.getElementById('gc'),er=doc
 async function tryC(c){const h=await sha(c);if(H.includes(h)){try{localStorage.setItem('kb_ok',h)}catch(e){}g.style.display='none';return}er.textContent='Код қате. Қайта тексеріңіз.'}
 document.getElementById('gf').onsubmit=e=>{e.preventDefault();if(inp.value.trim())tryC(inp.value)};
 let ok=null;try{ok=localStorage.getItem('kb_ok')}catch(e){}const q=new URLSearchParams(location.search).get('code');
-if(H.includes(ok))g.style.display='none';else if(q)tryC(q);else setTimeout(()=>inp.focus(),100);})();
+let p3=null;try{p3=sessionStorage.getItem('c3_pass')}catch(e){}if(H.includes(ok)||p3)g.style.display='none';else if(q)tryC(q);else setTimeout(()=>inp.focus(),100);})();
 </script>
 
 
