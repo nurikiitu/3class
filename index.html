@@ -967,5 +967,6 @@ if(LOCK&&LOCK!==3)location.replace(LOCK+'/?l=1');
 else if(LOCK===3){openGrade(3);$('#gradebar button').style.visibility='hidden';window.showGrades=()=>openGrade(3)}
 else if(QP.get('g')==='3')openGrade(3);
 </script>
+<script id="revchk">(()=>{const K='c3_ok';const chk=async()=>{let h=null;try{h=sessionStorage.getItem(K)}catch(e){}if(!h||document.hidden)return;try{const r=await fetch(location.pathname+'?rv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();if(t.length>5000&&t.includes('const C={')&&!t.includes("'"+h+"'")){try{sessionStorage.removeItem(K)}catch(e){}alert('Сіздің кодыңыз өшірілді. Қайта кіру үшін жаңа код енгізіңіз.\n📞 8 747 733 95 73');location.href=location.pathname}}catch(e){}};setInterval(chk,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)chk()})})()</script>
 </body>
 </html>
